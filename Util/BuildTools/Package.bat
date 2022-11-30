@@ -99,8 +99,11 @@ if not defined UE4_ROOT (
 rem Set packaging paths
 rem
 for /f %%i in ('git describe --tags --dirty --always') do set CARLA_VERSION=%%i
+set CARLA_VERSION=0.9.13
 if not defined CARLA_VERSION goto error_carla_version
 
+set ROOT_PATH=%cd:\=/%/
+set INSTALLATION_DIR=%ROOT_PATH%Build/
 set BUILD_FOLDER=%INSTALLATION_DIR%UE4Carla/%CARLA_VERSION%/
 
 set DESTINATION_ZIP=%INSTALLATION_DIR%UE4Carla/CARLA_%CARLA_VERSION%.zip
@@ -264,7 +267,7 @@ for /f "tokens=* delims=" %%i in ("!PACKAGES!") do (
     if not !PACKAGE_NAME! == Carla (
         echo Preparing environment for cooking '!PACKAGE_NAME!'.
 
-        set BUILD_FOLDER=%INSTALLATION_DIR%UE4Carla/!PACKAGE_NAME!_%CARLA_VERSION%\
+        set BUILD_FOLDER=%INSTALLATION_DIR%UE4Carla/!PACKAGE_NAME!_%CARLA_VERSION%/
         set PACKAGE_PATH=%CARLAUE4_ROOT_FOLDER%/Content/!PACKAGE_NAME!
 
         if not exist "!BUILD_FOLDER!" mkdir "!BUILD_FOLDER!"

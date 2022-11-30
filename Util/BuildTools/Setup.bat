@@ -24,6 +24,8 @@ rem ============================================================================
 rem -- Parse arguments ---------------------------------------------------------
 rem ============================================================================
 
+set ROOT_PATH=%cd:\=/%/
+set INSTALLATION_DIR=%ROOT_PATH:/=\%Build\
 set BOOST_VERSION=1.72.0
 set INSTALLERS_DIR=%ROOT_PATH:/=\%Util\InstallersWin\
 set VERSION_FILE=%ROOT_PATH:/=\%Util\ContentVersions.txt
@@ -64,7 +66,7 @@ rem ============================================================================
 rem -- Basic info and setup ----------------------------------------------------
 rem ============================================================================
 
-set INSTALLATION_DIR=%INSTALLATION_DIR:/=\%
+@REM set INSTALLATION_DIR=%INSTALLATION_DIR:/=\%
 
 echo %FILE_N% Asynchronous jobs:  %NUMBER_OF_ASYNC_JOBS%
 echo %FILE_N% Boost toolset:      %TOOLSET%
@@ -255,6 +257,7 @@ rem -- Generate CMake ----------------------------------------------------------
 rem ============================================================================
 
 for /f %%i in ('git describe --tags --dirty --always') do set carla_version=%%i
+set carla_version=0.9.13
 set CMAKE_INSTALLATION_DIR=%INSTALLATION_DIR:\=/%
 
 echo %FILE_N% Creating "CMakeLists.txt.in"...

@@ -17,6 +17,8 @@ rem ============================================================================
 set DOC_STRING=Build LibCarla.
 set USAGE_STRING=Usage: %FILE_N% [-h^|--help] [--rebuild] [--server] [--client] [--clean]
 
+set ROOT_PATH=%cd:\=/%/
+set INSTALLATION_DIR=%ROOT_PATH:/=\%Build\
 set REMOVE_INTERMEDIATE=false
 set BUILD_SERVER=false
 set BUILD_CLIENT=false
